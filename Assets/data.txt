@@ -1,0 +1,8 @@
+{
+"logo":"D:\\Richard\\Work\\Octohub\\BlessedTides\\BlessedTides\\Data\\logo.mp4",
+"movie":"D:\\Richard\\Work\\Octohub\\BlessedTides\\BlessedTides\\Data\\movie.mp4",
+"gameId":"101",
+"gameStart":"Game",
+"currentState":"logo",
+"wssurl":"wss://websocket-joystick-872551998900.me-central1.run.app"
+}
