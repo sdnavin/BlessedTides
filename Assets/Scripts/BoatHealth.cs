@@ -8,6 +8,9 @@ public class BoatHealth : MonoBehaviour
     public float currentHealth;    // Current health of the boat
     public Vector3 startPos;
     public Quaternion startRot;
+
+    private Coroutine currentCoroutine;
+
     private void Start()
     {
         // Initialize the boat's health
@@ -28,7 +31,12 @@ public class BoatHealth : MonoBehaviour
         // Check if the boat is destroyed
         if (currentHealth <= 0)
         {
-            StartCoroutine(DestroyBoat());
+            if(currentCoroutine != null) 
+            {
+              StopCoroutine(currentCoroutine);
+              ResetBoatTransform();
+            }
+          currentCoroutine = StartCoroutine(DestroyBoat());
         }
         transform.position = new Vector3(
      transform.position.x,
@@ -45,12 +53,43 @@ public class BoatHealth : MonoBehaviour
     private IEnumerator DestroyBoat()
     {
         Debug.Log("The boat has been destroyed!");
-        yield return new WaitForSeconds(5);
-        //SceneManager.LoadScene(0);
+
+        // Disable movement or controls here if needed
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(
+            startRotation.eulerAngles.x,
+            startRotation.eulerAngles.y + 180f,
+            startRotation.eulerAngles.z
+        );
+
+        float duration = 1.5f; // Duration of flip in seconds
+        float elapsed = 0f;
+
+        // Smoothly rotate over time
+        while (elapsed < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final rotation is exact
+        transform.rotation = targetRotation;
+
+        yield return new WaitForSeconds(5 - duration); // Wait remaining time
+
+        ResetBoatTransform();
+
+        // Enable movement or controls again if needed
+    }
+
+    private void ResetBoatTransform()
+    {
+        // Reset to original state
         transform.position = startPos;
         transform.rotation = startRot;
         currentHealth = maxHealth;
-        // Add boat destruction logic here (e.g., trigger game over or respawn)
     }
 
     public float GetHealth()

@@ -33,9 +33,12 @@ public class BaseInventory : MonoBehaviour
     // Add resources to the base
     public bool AddToBase(int amount)
     {
-        if (currentBaseLoad + amount <= maxBaseCapacity)
+        int spaceLeft = maxBaseCapacity - currentBaseLoad;
+        int amountToAdd = Mathf.Min(spaceLeft, amount);
+
+        if (amountToAdd > 0)
         {
-            currentBaseLoad += amount;
+            currentBaseLoad += amountToAdd;
             UpdateBaseInventoryDisplay(); // Update base inventory visuals
             return true;
         }

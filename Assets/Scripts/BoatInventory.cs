@@ -107,10 +107,13 @@ public class BoatInventory : MonoBehaviour
     // Trigger-based unloading when near the base
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Base")) // Ensure the colliding object is the base
+        if (other.CompareTag("Base") && other.TryGetComponent<IslandBaseData>(out IslandBaseData islandBase)) // Ensure the colliding object is the base
         {
-            Debug.Log("Boat reached the base. Starting unloading...");
-            StartUnloading();
+            if(islandBase.HasBoat(this))
+            {
+                Debug.Log("Boat reached the base. Starting unloading...");
+                StartUnloading();
+            }
         }
 
         if (other.CompareTag("Souls")) // Ensure the colliding object is the base
@@ -125,10 +128,13 @@ public class BoatInventory : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Base"))
+        if (other.CompareTag("Base") && other.TryGetComponent<IslandBaseData>(out IslandBaseData islandBase)) // Ensure the colliding object is the base
         {
-            //Debug.Log("Boat left the base. Stopping unloading...");
-            StopUnloading();
+            if (islandBase.HasBoat(this))
+            {
+                //Debug.Log("Boat left the base. Stopping unloading...");
+                StopUnloading();
+            }
         }
     }
 

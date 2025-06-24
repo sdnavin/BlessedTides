@@ -57,6 +57,7 @@ public class FishFlock : MonoBehaviour
     private void MoveFish()
     {
         // Move the fish towards the target position
+        targetPosition.y = 0f; //Keep target position on y plane
         Vector3 direction = (targetPosition - transform.position).normalized;
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
 

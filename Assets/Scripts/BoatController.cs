@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class BoatController : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class BoatController : MonoBehaviour
     public float turnSpeed = 180f;      // Turning speed
     public float swayAmount = 2f;       // The amount the boat sways left/right
     public float swaySpeed = 2f;        // Speed of the swaying motion
+
+    public float acceleration = 2.5f;       // How fast it accelerates
+    public float deceleration = 1.5f;       // How fast it slows down
 
     // Boost parameters
     public float boostMultiplier = 2.5f;  // How much faster the boat goes when boosting
@@ -28,6 +32,11 @@ public class BoatController : MonoBehaviour
 
     public BoatHealth boatHealth;
 
+    private float moveValue;
+    private float turn;
+
+    private Vector3 velocity = Vector3.zero; // Current velocity
+
     private void Start()
     {
         boatHealth = GetComponent<BoatHealth>();
@@ -47,24 +56,33 @@ public class BoatController : MonoBehaviour
     {
         HandleMovementJoystick();
 
-        // Boat movement controls (using arrow keys or joystick)
-        float moveForward = (Input.GetAxis("Vertical")) * speed;
-        float turn = (Input.GetAxis("Horizontal")) * turnSpeed * Time.fixedDeltaTime;
-
         
 
-        // Calculate the forward movement direction
-        Vector3 forwardMovement = transform.forward * moveForward * Time.fixedDeltaTime;
+        // Normal movement based on player input
+        Vector3 forwardMovement = transform.forward * moveValue * Time.fixedDeltaTime;
 
-        // Apply boost if active
+        // Boost movement is always forward, regardless of moveValue
+        Vector3 boostMovement = Vector3.zero;
         if (isBoosting)
         {
-            forwardMovement = transform.forward * Time.deltaTime * boostMultiplier;
-            //transform.Translate(transform.forward * speed * boostMultiplier * Time.deltaTime, Space.World);
+            boostMovement = transform.forward * boostMultiplier * Time.fixedDeltaTime;
         }
 
-        // Move the boat using Rigidbody
-        rb.MovePosition(rb.position + forwardMovement);
+        // Combine both and apply movement
+        rb.MovePosition(rb.position + forwardMovement + boostMovement);
+
+        //// Calculate the forward movement direction
+        //Vector3 forwardMovement = transform.forward * moveForward * Time.fixedDeltaTime;
+
+        //// Apply boost if active
+        //if (isBoosting)
+        //{
+        //    forwardMovement = transform.forward * Time.deltaTime * boostMultiplier;
+        //    //transform.Translate(transform.forward * speed * boostMultiplier * Time.deltaTime, Space.World);
+        //}
+
+        //// Move the boat using Rigidbody
+        //rb.MovePosition(rb.position + forwardMovement);
 
         // Rotate the boat using Rigidbody
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
@@ -117,14 +135,24 @@ public class BoatController : MonoBehaviour
         // Apply boost multiplier to joystick movement if boosting
         float currentSpeed = isBoosting ? speed * boostMultiplier : speed;
 
+        Vector3 targetDirection = normalizedInput;
+        Vector3 targetVelocity = targetDirection * currentSpeed;
+
+        // Accelerate or decelerate towards the target velocity
+        velocity = Vector3.MoveTowards(velocity, targetVelocity,
+                    (targetVelocity.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime);
+
+        // Apply movement
+        transform.Translate(velocity * Time.deltaTime, Space.World);
+
         // Calculate the movement direction based on joystick input
         Vector3 direction = new Vector3(normalizedInput.x, 0, normalizedInput.y);
 
-        // Move the boat in the direction of the joystick input
-        transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
+        //// Move the boat in the direction of the joystick input
+        //transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
 
         // Rotate the boat to face the movement direction
-        if (direction != Vector3.zero)
+        if (direction.magnitude > 0)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
@@ -138,6 +166,10 @@ public class BoatController : MonoBehaviour
 
         // Handle boost input and timers
         HandleBoost();
+
+        // Boat movement controls (using arrow keys or joystick)
+        moveValue = (UnityEngine.Input.GetAxis("Vertical")) * speed;
+        turn = (UnityEngine.Input.GetAxis("Horizontal")) * turnSpeed * Time.fixedDeltaTime;
     }
     bool boostNow = false;
     // New method to handle boost functionality

@@ -585,6 +585,8 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  acceleration: 2.5
+  deceleration: 1.5
   boostMultiplier: 2.5
   boostDuration: 1
   boostCooldown: 3
@@ -18427,6 +18429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720359987977669938}
   - component: {fileID: 4069437467517387153}
+  - component: {fileID: 3275497235851657645}
   m_Layer: 0
   m_Name: Box
   m_TagString: Base
@@ -18468,8 +18471,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< Updated upstream
   m_Size: {x: 1.2222006, y: 1, z: 1.1110377}
   m_Center: {x: -0.01693478, y: 0, z: -0.05551902}
+=======
+  m_Size: {x: 3.2911174, y: 1.23521, z: 1.3199935}
+  m_Center: {x: -0.12646817, y: -0.117605045, z: -0.17816445}
+--- !u!114 &3275497235851657645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478253357611004359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369788abc7fa50d48a1acd8f43e3b4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatInventory: {fileID: 5607555728279340172}
+>>>>>>> Stashed changes
 --- !u!1 &4608962979809245229
 GameObject:
   m_ObjectHideFlags: 0
@@ -24192,6 +24213,10 @@ Transform:
   - {fileID: 4722889760681522407}
   - {fileID: 1407164475018148217}
   m_Father: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+  m_RootOrder: -1
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2297727759921567600
 MonoBehaviour:
@@ -32814,6 +32839,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 199115893721452942, guid: df0c133e93e92ea43ac4d6bec15faea4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
