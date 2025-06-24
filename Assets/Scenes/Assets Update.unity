@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18038872, g: 0.22584145, b: 0.3069833, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2699,6 +2699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &104781634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,7 +2735,11 @@ MonoBehaviour:
   - {fileID: 316329514}
   baseInventory: {fileID: 953513905}
   soulInventory: {fileID: 953513902}
+  controller: {fileID: 0}
   uGUI: {fileID: 0}
+  isFull: 0
+  FullObj: {fileID: 0}
+  arrowObj: {fileID: 0}
 --- !u!65 &104781635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2769,6 +2775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {fileID: 1031889354}
   boatCatch: {fileID: 0}
+  fishingArea: {fileID: 0}
   catchDistance: 5
   followTime: 1
   lineRenderer: {fileID: 788058726}
@@ -2778,6 +2785,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f49ef58c3d33e90408722e99526137eb, type: 3}
   audioSource: {fileID: 104781632}
   circleProgress: {fileID: 0}
+  fishingrod: {fileID: 0}
 --- !u!54 &104781637
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2821,8 +2829,12 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  boostMultiplier: 2.5
+  boostDuration: 1
+  boostCooldown: 3
   slotID: 1
   slotoffset: 1
+  boatHealth: {fileID: 0}
 --- !u!1 &108634170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,6 +3179,8 @@ MonoBehaviour:
   - {fileID: 1190389978}
   - {fileID: 1360075960}
   - {fileID: 846534085}
+  invventoryUI: {fileID: 0}
+  glowControllers: []
 --- !u!1 &129609220
 GameObject:
   m_ObjectHideFlags: 0
@@ -24198,6 +24212,7 @@ MonoBehaviour:
   - {fileID: 524246640}
   - {fileID: 2141000192}
   - {fileID: 1051298175}
+  userData: []
   serverUrl: wss://websocket-joystick-production.up.railway.app/socket.io
   autoReconnect: 1
   dataInVis:
@@ -24205,6 +24220,7 @@ MonoBehaviour:
     data:
       direction: 
       message: 
+      userId: 
       type: 
       x: 0
       y: 0
@@ -24259,6 +24275,22 @@ MonoBehaviour:
         m_CallState: 2
   uniqueID: 
   slotNumber: 0
+  gameDetails:
+    logo: 
+    movie: 
+    gameId: 
+    gameStart: 
+    currentState: 
+    wssurl: 
+  webSocketMessage:
+    status: 
+    data:
+      messageType: 
+      gameId: 
+      scene: 
+      startTime: 0
+      duration: 0
+  sessionController: {fileID: 0}
 --- !u!4 &678032542
 Transform:
   m_ObjectHideFlags: 0
@@ -33850,6 +33882,8 @@ MonoBehaviour:
   - {fileID: 14975205}
   - {fileID: 2074433713}
   - {fileID: 2008005425}
+  invventoryUI: {fileID: 0}
+  glowControllers: []
 --- !u!1 &957506820
 GameObject:
   m_ObjectHideFlags: 0
@@ -35328,8 +35362,12 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  boostMultiplier: 2.5
+  boostDuration: 1
+  boostCooldown: 3
   slotID: 0
   slotoffset: 1
+  boatHealth: {fileID: 0}
 --- !u!54 &1008837009
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35371,6 +35409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {fileID: 919132148720963908}
   boatCatch: {fileID: 0}
+  fishingArea: {fileID: 0}
   catchDistance: 5
   followTime: 1
   lineRenderer: {fileID: 531105837}
@@ -35380,6 +35419,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f49ef58c3d33e90408722e99526137eb, type: 3}
   audioSource: {fileID: 1008837021}
   circleProgress: {fileID: 0}
+  fishingrod: {fileID: 0}
 --- !u!65 &1008837011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35435,7 +35475,11 @@ MonoBehaviour:
   - {fileID: 1026918832}
   baseInventory: {fileID: 1419593579}
   soulInventory: {fileID: 1419593580}
+  controller: {fileID: 0}
   uGUI: {fileID: 0}
+  isFull: 0
+  FullObj: {fileID: 0}
+  arrowObj: {fileID: 0}
 --- !u!114 &1008837020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35450,6 +35494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!82 &1008837021
 AudioSource:
   m_ObjectHideFlags: 0
@@ -51541,6 +51587,8 @@ MonoBehaviour:
   - {fileID: 1613541633}
   - {fileID: 568109879}
   - {fileID: 615313291}
+  invventoryUI: {fileID: 0}
+  glowControllers: []
 --- !u!1 &1337228034
 GameObject:
   m_ObjectHideFlags: 0
@@ -53198,6 +53246,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  invventoryUI: {fileID: 0}
+  glowControllers: []
 --- !u!114 &1419593580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61860,12 +61910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679db2c9c7d2ffe42905fbddca2bd83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseTransform: {fileID: 0}
   boat: {fileID: 1008837007}
-  arrowUI: {fileID: 0}
-  mainCamera: {fileID: 1262305881}
-  canvas: {fileID: 1794051813}
-  edgeOffset: 50
+  arrow: {fileID: 0}
+  baseLocation: {fileID: 0}
+  arrowDistance: 2
 --- !u!1 &1798946867
 GameObject:
   m_ObjectHideFlags: 0
@@ -66272,6 +66320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2048188536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66306,7 +66356,11 @@ MonoBehaviour:
   - {fileID: 1530861220}
   baseInventory: {fileID: 127787655}
   soulInventory: {fileID: 127787652}
+  controller: {fileID: 0}
   uGUI: {fileID: 0}
+  isFull: 0
+  FullObj: {fileID: 0}
+  arrowObj: {fileID: 0}
 --- !u!65 &2048188537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66342,6 +66396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {fileID: 542192220}
   boatCatch: {fileID: 0}
+  fishingArea: {fileID: 0}
   catchDistance: 5
   followTime: 1
   lineRenderer: {fileID: 1183736815}
@@ -66351,6 +66406,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f49ef58c3d33e90408722e99526137eb, type: 3}
   audioSource: {fileID: 2048188534}
   circleProgress: {fileID: 0}
+  fishingrod: {fileID: 0}
 --- !u!54 &2048188539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66394,8 +66450,12 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  boostMultiplier: 2.5
+  boostDuration: 1
+  boostCooldown: 3
   slotID: 2
   slotoffset: -1
+  boatHealth: {fileID: 0}
 --- !u!4 &2048188541
 Transform:
   m_ObjectHideFlags: 0
@@ -67270,6 +67330,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2073785147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67304,7 +67366,11 @@ MonoBehaviour:
   - {fileID: 1391900292}
   baseInventory: {fileID: 1334507340}
   soulInventory: {fileID: 1334507337}
+  controller: {fileID: 0}
   uGUI: {fileID: 0}
+  isFull: 0
+  FullObj: {fileID: 0}
+  arrowObj: {fileID: 0}
 --- !u!65 &2073785148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67340,6 +67406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boat: {fileID: 1893517662}
   boatCatch: {fileID: 0}
+  fishingArea: {fileID: 0}
   catchDistance: 5
   followTime: 1
   lineRenderer: {fileID: 1585547442}
@@ -67349,6 +67416,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f49ef58c3d33e90408722e99526137eb, type: 3}
   audioSource: {fileID: 2073785145}
   circleProgress: {fileID: 0}
+  fishingrod: {fileID: 0}
 --- !u!54 &2073785150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67392,8 +67460,12 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  boostMultiplier: 2.5
+  boostDuration: 1
+  boostCooldown: 3
   slotID: 3
   slotoffset: -1
+  boatHealth: {fileID: 0}
 --- !u!4 &2073785152
 Transform:
   m_ObjectHideFlags: 0
