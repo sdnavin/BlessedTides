@@ -25,7 +25,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2250090995728342350}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,6 +33,7 @@ Transform:
   - {fileID: 2053653058060558870}
   - {fileID: 5001626574509810341}
   m_Father: {fileID: 0}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5001626574889188550
 MonoBehaviour:
@@ -49,13 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
   rotationSpeed: 3
-  detectionRadius: 25
-  attackDistance: 5
-  boat: {fileID: 0}
+  detectionRadius: 20
+  attackDistance: 4
+  boats: []
   fixedYPosition: 0
   damageMake: 5
   animator: {fileID: 5001626574502055265}
-  damageCooldown: 1
+  damageCooldown: 13
 --- !u!65 &2250090995728342344
 BoxCollider:
   m_ObjectHideFlags: 0

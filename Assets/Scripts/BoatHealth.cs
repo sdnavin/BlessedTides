@@ -31,10 +31,9 @@ public class BoatHealth : MonoBehaviour
         // Check if the boat is destroyed
         if (currentHealth <= 0)
         {
-            if(currentCoroutine != null) 
+            if(currentCoroutine!= null) 
             {
               StopCoroutine(currentCoroutine);
-              ResetBoatTransform();
             }
           currentCoroutine = StartCoroutine(DestroyBoat());
         }
@@ -59,25 +58,24 @@ public class BoatHealth : MonoBehaviour
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(
             startRotation.eulerAngles.x,
-            startRotation.eulerAngles.y + 180f,
-            startRotation.eulerAngles.z
+            startRotation.eulerAngles.y,
+            startRotation.eulerAngles.z + 180f
         );
 
-        float duration = 1.5f; // Duration of flip in seconds
-        float elapsed = 0f;
-
+        float duration = 1f; // Duration of flip in seconds
+        float elapsed = 0;
         // Smoothly rotate over time
         while (elapsed < duration)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / duration);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, duration * Time.deltaTime);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         // Ensure final rotation is exact
-        transform.rotation = targetRotation;
+        //transform.rotation = targetRotation;
 
-        yield return new WaitForSeconds(5 - duration); // Wait remaining time
+        yield return new WaitForSeconds(0.7f); // Wait remaining time
 
         ResetBoatTransform();
 

@@ -2677,18 +2677,6 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: attackDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: damageCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: detectionRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -5793,18 +5781,6 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: attackDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: damageCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: detectionRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -5916,18 +5892,6 @@ PrefabInstance:
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: rotationSpeed
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: attackDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: damageCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
-      propertyPath: detectionRadius
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size
