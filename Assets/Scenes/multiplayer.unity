@@ -2678,11 +2678,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: attackDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
+      propertyPath: damageCooldown
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: detectionRadius
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size
@@ -5790,11 +5794,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: attackDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
+      propertyPath: damageCooldown
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: detectionRadius
-      value: 13
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size
@@ -5911,11 +5919,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: attackDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
+      propertyPath: damageCooldown
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: detectionRadius
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5001626574889188550, guid: 74ef159a29e220c489578eeda86c18c3, type: 3}
       propertyPath: boats.Array.size

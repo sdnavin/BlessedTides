@@ -126,7 +126,7 @@ public class BoatController : MonoBehaviour
 
         // Get joystick input
         // If there's no input, don't move the boat
-        //if (joystickInput == Vector2.zero)
+        //if (joystickInput.sqrMagnitude <= 0.1f)
         //    return;
 
         // Normalize the input for consistent movement
@@ -135,7 +135,7 @@ public class BoatController : MonoBehaviour
         // Apply boost multiplier to joystick movement if boosting
         float currentSpeed = isBoosting ? speed * boostMultiplier : speed;
 
-        Vector3 targetDirection = normalizedInput;
+        Vector3 targetDirection = new Vector3(normalizedInput.x, 0, normalizedInput.y);
         Vector3 targetVelocity = targetDirection * currentSpeed;
 
         // Accelerate or decelerate towards the target velocity
@@ -152,7 +152,7 @@ public class BoatController : MonoBehaviour
         //transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
 
         // Rotate the boat to face the movement direction
-        if (direction.magnitude > 0)
+        if (direction.sqrMagnitude > 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
