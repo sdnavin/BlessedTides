@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaypointRoamer : MonoBehaviour
 {
+    public BaseInventory baseInventory;       // Reference to the BaseInventory script
+
     [Header("Waypoint Settings")]
     public List<Transform> waypoints = new List<Transform>();  // List of waypoints to visit
     public float moveSpeed = 5f;                              // Speed of character movement
@@ -23,6 +25,16 @@ public class WaypointRoamer : MonoBehaviour
     private bool isMoving = false;                            // Flag to indicate if character is moving
     private bool isWaiting = false;                           // Flag to indicate if character is waiting at a waypoint
     private List<int> randomWaypointIndices = new List<int>(); // List for randomized waypoint order
+
+    private void OnEnable()
+    {
+        baseInventory.OnBaseLoadMaxedOut += Celebrate;
+    }
+
+    private void OnDisable()
+    {
+        baseInventory.OnBaseLoadMaxedOut -= Celebrate;
+    }
 
     private void Start()
     {
@@ -86,6 +98,11 @@ public class WaypointRoamer : MonoBehaviour
 
         // Set the first waypoint as the destination
         SetNextWaypoint();
+    }
+
+    private void Celebrate()
+    {
+        animator.SetTrigger("Dance");
     }
 
     // Move towards the current destination

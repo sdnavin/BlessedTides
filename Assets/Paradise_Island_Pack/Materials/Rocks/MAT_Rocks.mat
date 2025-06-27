@@ -8,13 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MAT_Rocks
-  m_Shader: {fileID: -6465566751694194690, guid: e091d4d8aa347f340a280616f1bc7956, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: dda5b5245b6e4004089e394b0484ad9e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -29,6 +27,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: c41336aba574d444d890c99721ce26d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_1F8FDBC0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_2889A38:
         m_Texture: {fileID: 2800000, guid: 9df811f2575383c4390ee7e254455caf, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -39,6 +41,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_A14FC356:
         m_Texture: {fileID: 2800000, guid: 626d55af427ba444a8637cef33c35996, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_A7BED231:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_B307BD15:
@@ -55,6 +61,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_C450B3FD:
         m_Texture: {fileID: 2800000, guid: 82be1e1bca1fe5648ad5bffc1bc42155, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D86E1AD6:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E3688C72:
@@ -113,11 +123,15 @@ Material:
     m_Floats:
     - Vector1_3988BCCC: 0.43
     - Vector1_4E96E868: 50
+    - Vector1_679EE3E5: 5
     - Vector1_69AC3F1C: 7
     - Vector1_79EE7741: 1
     - Vector1_7D0384B2: 0.05
+    - Vector1_9BDE87C6: 0
     - Vector1_AE3FF09E: 1
+    - Vector1_D16BC4D0: 0.5
     - Vector1_E8BF0DC6: 0.2
+    - Vector1_F1292F5F: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
