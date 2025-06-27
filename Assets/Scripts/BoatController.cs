@@ -17,6 +17,7 @@ public class BoatController : MonoBehaviour
     public float boostDuration = 1.0f;    // How long the boost lasts in seconds
     public float boostCooldown = 3.0f;    // Cooldown time before boost can be used again
 
+    [SerializeField] GameObject boostTrail;
     private Rigidbody rb;               // Reference to the Rigidbody component
     private float swayTimer = 0f;       // Timer for the swaying motion
     private Transform childTransform;   // Reference to the first child object
@@ -36,6 +37,8 @@ public class BoatController : MonoBehaviour
     private float turn;
 
     private Vector3 velocity = Vector3.zero; // Current velocity
+
+
 
     private void Start()
     {
@@ -170,6 +173,8 @@ public class BoatController : MonoBehaviour
         // Boat movement controls (using arrow keys or joystick)
         moveValue = (UnityEngine.Input.GetAxis("Vertical")) * speed;
         turn = (UnityEngine.Input.GetAxis("Horizontal")) * turnSpeed * Time.fixedDeltaTime;
+
+        boostTrail.SetActive(isBoosting);
     }
     bool boostNow = false;
     // New method to handle boost functionality
