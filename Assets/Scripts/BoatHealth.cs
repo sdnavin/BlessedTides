@@ -62,7 +62,7 @@ public class BoatHealth : MonoBehaviour
             startRotation.eulerAngles.z + 180f
         );
 
-        float duration = 1f; // Duration of flip in seconds
+        float duration = 1.5f; // Duration of flip in seconds
         float elapsed = 0;
         // Smoothly rotate over time
         while (elapsed < duration)

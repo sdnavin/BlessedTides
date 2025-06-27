@@ -7,6 +7,7 @@ public class BaseInventory : MonoBehaviour
     public int currentBaseLoad = 0;          // Current load in the base
     public GameObject[] baseInventoryObjects; // Visual objects in the base (10 objects, each with 5 children)
 
+    public event Action OnBaseLoadMaxedOut = delegate { }; //Event triggered when the inventory has reached maxBaseCapacity
     public event Action<GameObject> OnBaseFullyLoaded; // Event triggered when a base object is fully loaded
     public TextMeshProUGUI invventoryUI;
 
@@ -40,6 +41,11 @@ public class BaseInventory : MonoBehaviour
         {
             currentBaseLoad += amountToAdd;
             UpdateBaseInventoryDisplay(); // Update base inventory visuals
+            if(currentBaseLoad == maxBaseCapacity)
+            {
+                //OnBaseLoadMaxedOut
+                OnBaseLoadMaxedOut?.Invoke();
+            }
             return true;
         }
         else

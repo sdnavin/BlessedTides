@@ -5418,6 +5418,8 @@ MonoBehaviour:
   turnSpeed: 180
   swayAmount: 2
   swaySpeed: 2
+  acceleration: 2.5
+  deceleration: 1.5
   boostMultiplier: 2.5
   boostDuration: 1
   boostCooldown: 3

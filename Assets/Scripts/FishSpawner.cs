@@ -7,7 +7,7 @@ public class FishSpawner : MonoBehaviour
 {
     public GameObject fishPrefab;    // Reference to the fish prefab
     public int numberOfFish = 10;    // Number of fish to spawn
-    public float spawnRadius = 10f;  // Radius to spawn fish within
+    public float spawnRadius = 15f;  // Radius to spawn fish within
     public UnityEvent onEnable;
     public float respawnTime = 5f;   // Time to re-enable a deactivated fish
 
@@ -44,6 +44,10 @@ public class FishSpawner : MonoBehaviour
         // Reset the fish position (optional) and re-enable it
         fish.transform.position = fish.transform.position + Random.insideUnitSphere * spawnRadius;
         fish.transform.position = new Vector3(fish.transform.position.x, 0, fish.transform.position.z); // Y = 0
+        if(fish.TryGetComponent<FishFlock>(out FishFlock flock))
+        {
+            flock.enabled = true;
+        }
         fish.SetActive(true);
     }
 }

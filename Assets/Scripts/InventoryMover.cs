@@ -15,11 +15,22 @@ public class InventoryMover : MonoBehaviour
     private bool isReturning = false;         // Flag to indicate returning state
 
     public Animator animator;                 // Reference to the Animator component
+    [SerializeField] ParticleSystem celebrationFX;
 
     private void Start()
     {
         // Subscribe to the event from BaseInventory
         baseInventory.OnBaseFullyLoaded += HandleFullyLoadedBase;
+    }
+
+    private void OnEnable()
+    {
+        baseInventory.OnBaseLoadMaxedOut += Celebrate;
+    }
+
+    private void OnDisable()
+    {
+        baseInventory.OnBaseLoadMaxedOut -= Celebrate;
     }
 
     private void Update()
@@ -44,6 +55,15 @@ public class InventoryMover : MonoBehaviour
             destination = targetInventoryObject.transform.position; // Move to the inventory object
             isMovingToPickup = true;
         }
+
+        Celebrate();
+    }
+
+    [ContextMenu("Do Celebrate")]
+    private void Celebrate()
+    {
+        animator.SetTrigger("Dance");
+        celebrationFX.Play();
     }
 
     // Move towards the current destination

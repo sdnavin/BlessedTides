@@ -17,7 +17,8 @@ public class SessionController : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        
+        //Play Logo video by default
+        PlayVideo("logo", WebSocketClient.instance.gameDetails.logo, true);
     }
 
     // Update is called once per frame

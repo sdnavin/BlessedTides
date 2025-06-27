@@ -1,6 +1,6 @@
 {
 "logo":"E:\\KeyaTechnologies\\BlessedTides\\Data\\logo.mp4",
-"movie":"E:\\KeyaTechnologies\\BlessedTides\\Data\\logo.mp4",
+"movie":"E:\\KeyaTechnologies\\BlessedTides\\Data\\Movie.mp4",
 "gameId":"cmc67g5g50002v1m2yrcbu6o4",
 "gameStart":"multiplayer",
 "currentState":"logo",

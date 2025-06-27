@@ -15,6 +15,7 @@ public class FishCatcher : MonoBehaviour
     private float followTimer = 0f;       // Timer to track the 2 seconds of following
     private BoatInventory boatInventory;  // Reference to the boat's inventory system
 
+    private bool startCatching = false;
     private bool isCatching = false;      // Is the catching process active
     private Vector3 fishStartPosition;    // Initial position of the fish
     [SerializeField]
@@ -83,8 +84,15 @@ public class FishCatcher : MonoBehaviour
         }
         else
         {
+
             if (!isCatching)
             {
+                if(!startCatching) 
+                {
+                    fishingrod.SetTrigger("reel");
+                    startCatching = true;
+                }
+
                 followTimer += Time.deltaTime;
 
                 // Animate the line from the boat to the fish
@@ -95,15 +103,16 @@ public class FishCatcher : MonoBehaviour
                 // Set the positions of the line
                 lineRenderer.SetPosition(0, lineRenderer.transform.position); // Start position (boat's position)
                 lineRenderer.SetPosition(1, currentFish.transform.position); // Animate to boat
+                
                 if (t >= 1f)
                 {
                     circleProgress.progress = 0;
                     lineRenderer.SetPosition(1, lineRenderer.transform.position);
                     isCatching = true;
-                    fishingrod.SetTrigger("catch");
                     currentFish.GetComponent<FishFlock>().enabled = false;
                     followTimer = 0;
-                    float duration = fishingrod.GetCurrentAnimatorStateInfo(0).length;
+                    fishingrod.SetTrigger("catch");
+                    float duration = 1f;
                     iTween.MoveTo(currentFish, iTween.Hash("x", boat.transform.position.x, "y", boat.transform.position.y + 2, "z", boat.transform.position.z, "time", duration, "easeType", iTween.EaseType.spring));
                     fishStartPosition = currentFish.transform.position; // Save initial fish position
                 }
@@ -118,6 +127,7 @@ public class FishCatcher : MonoBehaviour
         circleProgress.progress = 0;
         fishingArea.SetActive(false);
         currentFish = null;
+        startCatching = false;
         isCatching = false;
         followTimer = 0f;
     }
@@ -171,6 +181,7 @@ public class FishCatcher : MonoBehaviour
             // Reset the line renderer and timer
             lineRenderer.enabled = false;
             followTimer = 0f;
+            startCatching = false;
             isCatching = false;
             fishingArea.SetActive(false);
             currentFish = null; // No fish is being followed anymore
