@@ -59,8 +59,7 @@ public class BoatController : MonoBehaviour
     {
         HandleMovementJoystick();
 
-        
-
+        /* obsolete
         // Normal movement based on player input
         Vector3 forwardMovement = transform.forward * moveValue * Time.fixedDeltaTime;
 
@@ -86,7 +85,7 @@ public class BoatController : MonoBehaviour
 
         //// Move the boat using Rigidbody
         //rb.MovePosition(rb.position + forwardMovement);
-
+        */
         // Rotate the boat using Rigidbody
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);
@@ -139,7 +138,18 @@ public class BoatController : MonoBehaviour
         float currentSpeed = isBoosting ? speed * boostMultiplier : speed;
 
         Vector3 targetDirection = new Vector3(normalizedInput.x, 0, normalizedInput.y);
+        
         Vector3 targetVelocity = targetDirection * currentSpeed;
+
+        
+        if (isBoosting)
+        {
+            if(targetDirection.sqrMagnitude <= 0.05f)
+            {
+                targetDirection = transform.forward;
+            }
+            targetVelocity = targetDirection * currentSpeed * boostMultiplier;
+        }
 
         // Accelerate or decelerate towards the target velocity
         velocity = Vector3.MoveTowards(velocity, targetVelocity,
@@ -147,7 +157,10 @@ public class BoatController : MonoBehaviour
 
         // Apply movement
         transform.Translate(velocity * Time.deltaTime, Space.World);
+        // Combine both and apply movement
+        //rb.MovePosition(rb.position + velocity + boostMovement);
 
+        
         // Calculate the movement direction based on joystick input
         Vector3 direction = new Vector3(normalizedInput.x, 0, normalizedInput.y);
 

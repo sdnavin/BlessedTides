@@ -588,9 +588,9 @@ MonoBehaviour:
   swaySpeed: 2
   acceleration: 3
   deceleration: 0.5
-  boostMultiplier: 3.5
+  boostMultiplier: 4
   boostDuration: 1.25
-  boostCooldown: 2
+  boostCooldown: 1.5
   boostTrail: {fileID: 3839917286765040216}
   slotID: 0
   slotoffset: 1
