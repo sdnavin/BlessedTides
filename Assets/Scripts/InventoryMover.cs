@@ -55,11 +55,8 @@ public class InventoryMover : MonoBehaviour
             destination = targetInventoryObject.transform.position; // Move to the inventory object
             isMovingToPickup = true;
         }
-
-        Celebrate();
     }
 
-    [ContextMenu("Do Celebrate")]
     private void Celebrate()
     {
         animator.SetTrigger("Dance");
