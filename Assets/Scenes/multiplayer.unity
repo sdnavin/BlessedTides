@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061f10d77cd030e4bbdc48ab8afd5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qrCodeWidth: 256
-  qrCodeHeight: 256
+  qrCodeWidth: 1024
+  qrCodeHeight: 1024
   url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 2
@@ -3796,8 +3796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061f10d77cd030e4bbdc48ab8afd5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qrCodeWidth: 256
-  qrCodeHeight: 256
+  qrCodeWidth: 1024
+  qrCodeHeight: 1024
   url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 4
@@ -4239,8 +4239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061f10d77cd030e4bbdc48ab8afd5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qrCodeWidth: 256
-  qrCodeHeight: 256
+  qrCodeWidth: 1024
+  qrCodeHeight: 1024
   url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 1
@@ -5017,8 +5017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061f10d77cd030e4bbdc48ab8afd5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qrCodeWidth: 256
-  qrCodeHeight: 256
+  qrCodeWidth: 1024
+  qrCodeHeight: 1024
   url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 3
