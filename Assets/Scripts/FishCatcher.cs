@@ -112,7 +112,7 @@ public class FishCatcher : MonoBehaviour
                     currentFish.GetComponent<FishFlock>().enabled = false;
                     followTimer = 0;
                     fishingrod.SetTrigger("catch");
-                    float duration = 1f;
+                    float duration = fishingrod.GetCurrentAnimatorStateInfo(0).length;
                     iTween.MoveTo(currentFish, iTween.Hash("x", boat.transform.position.x, "y", boat.transform.position.y + 2, "z", boat.transform.position.z, "time", duration, "easeType", iTween.EaseType.spring));
                     fishStartPosition = currentFish.transform.position; // Save initial fish position
                 }

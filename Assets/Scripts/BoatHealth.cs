@@ -10,6 +10,7 @@ public class BoatHealth : MonoBehaviour
     public Quaternion startRot;
 
     private Coroutine currentCoroutine;
+    [SerializeField] GameObject trailGroup;
 
     private void Start()
     {
@@ -72,14 +73,18 @@ public class BoatHealth : MonoBehaviour
             yield return null;
         }
 
-        // Ensure final rotation is exact
-        //transform.rotation = targetRotation;
-
+        SetActiveBoatTrails(false);
         yield return new WaitForSeconds(0.7f); // Wait remaining time
-
         ResetBoatTransform();
+        yield return new WaitForSeconds(1f);
+        SetActiveBoatTrails(true);
 
         // Enable movement or controls again if needed
+    }
+
+    private void SetActiveBoatTrails(bool value)
+    {
+       trailGroup.SetActive(value);
     }
 
     private void ResetBoatTransform()
