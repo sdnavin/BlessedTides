@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -129,18 +130,26 @@ public class SessionController : MonoBehaviour
         {
             case "logo":
                 PlayVideo("logo",WebSocketClient.instance.gameDetails.logo,true);
+                SetActiveCursor(true);
                 break;
             case "video":
                 PlayVideo("movie",WebSocketClient.instance.gameDetails.movie);
+                SetActiveCursor(true);
                 break;
             case "game":
                 StartGame(data.gameId, data.startTime, data.duration);
+                SetActiveCursor(false);
                 break;
             default:
                 Debug.LogWarning("Unknown scene type: " + data.scene);
+                SetActiveCursor(true);
                 break;
         }
     }
 
+    private static void SetActiveCursor(bool value)
+    {
+        Cursor.visible = value;
+    }
 
 }
