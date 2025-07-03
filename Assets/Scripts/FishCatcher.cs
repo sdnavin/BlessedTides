@@ -80,6 +80,7 @@ public class FishCatcher : MonoBehaviour
         }
         else if (currentFish == null) // Look for fish if no catching is in progress
         {
+            fishingrod.SetTrigger("idle");
             CheckForFishInRange();
         }
         else
