@@ -113,17 +113,27 @@ public class SessionController : MonoBehaviour
         print("T :" + allScenes.Length);
         for (int t = 0; t < allScenes.Length; t++)
         {
-
+            AsyncOperation asyncOperation = null;
             if (allScenes[t].buildIndex == UIScene)
             {
                 SceneManager.UnloadSceneAsync(UIScene);
             }
             if (allScenes[t].buildIndex == GameScene)
             {
-                SceneManager.UnloadSceneAsync(GameScene);
+                asyncOperation = SceneManager.UnloadSceneAsync(GameScene);
+                if(asyncOperation != null) 
+                {
+                    asyncOperation.completed += PlayLogoScene;
+                }
             }
         }
     }
+
+    private void PlayLogoScene(AsyncOperation asyncOperation)
+    {
+       PlayVideo("logo", WebSocketClient.instance.gameDetails.logo, true);
+    }
+
     public void HandleAdminCommand(AdminCommandData data)
     {
         switch (data.scene.ToLower())
