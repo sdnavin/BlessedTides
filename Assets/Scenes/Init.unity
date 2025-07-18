@@ -237,6 +237,18 @@ MonoBehaviour:
       scene: 
       startTime: 0
       duration: 0
+    date:
+      messageType: 
+      gameId: 
+      editMode: 0
+      tableSettings:
+        table:
+          id: 
+          shape: 
+          width: 0
+          height: 0
+          plates: []
+      last: 0
   sessionController: {fileID: 678032544}
 --- !u!4 &678032542
 Transform:
@@ -295,7 +307,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameScene: 2
   UIScene: 1
+  SettingsScene: 3
   videoPlayer: {fileID: 0}
   videoURL: 
   contentType: 
   isLooping: 0
+  currentState: 0

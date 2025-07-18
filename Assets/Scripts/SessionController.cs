@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,16 +11,29 @@ public class SessionController : MonoBehaviour
 {
     public int GameScene;
     public int UIScene;
+    public int SettingsScene;
     public VideoPlayer videoPlayer;
 
     public string videoURL;
     public string contentType;
     public bool isLooping;
-        // Start is called before the first frame update
+    public GameState currentState;
+
+    private SettingsController settingsController;
+
+    public enum GameState
+    {
+        StandBy,
+        InGame,
+        Settings,
+        Video
+    }
+    // Start is called before the first frame update
     void Start()
     {
         //Play Logo video by default
         PlayVideo("logo", WebSocketClient.instance.gameDetails.logo, true);
+        currentState = GameState.StandBy;
     }
 
     // Update is called once per frame
@@ -35,9 +49,9 @@ public class SessionController : MonoBehaviour
             for (int t = 0; t < allScenes.Length; t++)
             {
                 print(allScenes[t].name);
-                if (allScenes[t].buildIndex == GameScene)
+                if (allScenes[t].buildIndex == GameScene || allScenes[t].buildIndex == SettingsScene)
                 {
-                    SceneManager.UnloadScene(GameScene);
+                    SceneManager.UnloadScene(allScenes[t].buildIndex);
                     videoURL = VideoURL;
                     isLooping = isLoop;
                     SceneManager.LoadSceneAsync(UIScene, LoadSceneMode.Additive);
@@ -141,14 +155,17 @@ public class SessionController : MonoBehaviour
             case "logo":
                 PlayVideo("logo",WebSocketClient.instance.gameDetails.logo,true);
                 SetActiveCursor(true);
+                currentState = GameState.StandBy;
                 break;
             case "video":
                 PlayVideo("movie",WebSocketClient.instance.gameDetails.movie);
                 SetActiveCursor(true);
+                currentState = GameState.Video;
                 break;
             case "game":
                 StartGame(data.gameId, data.startTime, data.duration);
                 SetActiveCursor(false);
+                currentState = GameState.InGame;
                 break;
             default:
                 Debug.LogWarning("Unknown scene type: " + data.scene);
@@ -162,4 +179,78 @@ public class SessionController : MonoBehaviour
         Cursor.visible = value;
     }
 
+    private void ChangeGameState(GameState gameState)
+    {
+        if (currentState == gameState) return;
+
+        currentState = gameState;
+        OnGameStateChanged();
+    }
+
+    private void OnGameStateChanged()
+    {
+        switch(currentState) 
+        {
+            case GameState.StandBy:
+                PlayLogoScene(null);
+                SetActiveCursor(true);
+                break;
+
+                case GameState.Video:
+                break;
+
+                case GameState.InGame:
+                break;
+
+            case GameState.Settings:
+                OpenSettingsScene();
+                SetActiveCursor(true);
+                break;
+        }
+    }
+
+    internal void HandleSettingsCommand(Date date)
+    {
+        if(currentState == GameState.InGame)
+        {
+            Debug.Log("Game mode is on: " + currentState);
+            return;
+        }
+
+        if (date.editMode == true)
+        {
+            ChangeGameState(GameState.Settings);
+        }
+        else
+        {
+            ChangeGameState(GameState.StandBy);
+            Debug.Log("Edit mode disabled!");
+        }
+    }
+
+    private void OpenSettingsScene()
+    {
+        Scene[] allScenes = SceneManager.GetAllScenes();
+        print("T :" + allScenes.Length);
+        if (allScenes.Length > 1)
+        {
+            SceneManager.UnloadSceneAsync(UIScene);
+        }
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SettingsScene, LoadSceneMode.Additive);
+        asyncOperation.completed += FindSettingsController;
+    }
+
+    private void FindSettingsController(AsyncOperation obj)
+    {
+        //Bad coding practice ...refactor later
+       settingsController = GameObject.FindObjectOfType<SettingsController>();
+    }
+
+    public void HandleSettingsUpdation(TableSettings tableSettings)
+    {
+       if(settingsController != null) 
+       {
+            settingsController.UpdateTable(tableSettings);
+       }
+    }
 }

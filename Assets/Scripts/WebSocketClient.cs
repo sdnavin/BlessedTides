@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using NativeWebSocket;
 using System.IO;
-
+using System.Collections.Generic;
 
 [System.Serializable]
 public class AdminCommandData
@@ -17,10 +17,69 @@ public class AdminCommandData
 }
 
 [System.Serializable]
+public class Root
+{
+    public string Status { get; set; }
+
+    public Date Date { get; set; }
+}
+
+[System.Serializable]
+public class Date
+{
+    public string messageType;
+
+    public string gameId;
+
+    public bool editMode;
+
+    public TableSettings tableSettings;
+
+    public bool last;
+}
+
+[System.Serializable]
+public class TableSettings
+{
+    public Table table;
+}
+
+[System.Serializable]
+public class Table
+{
+    public string id;
+
+    public string shape;
+
+    public int width;
+
+    public int height;
+
+    public List<Plate> plates;
+}
+
+[System.Serializable]
+public class Plate
+{
+    public string id;
+
+    public int x;
+
+    public int y;
+
+    public int size;
+
+    public int rotation;
+
+    public string tableId;
+}
+
+[System.Serializable]
 public class WebSocketMessage
 {
     public string status;
     public AdminCommandData data;
+    public Date date;
 }
 
 
@@ -235,11 +294,27 @@ public class WebSocketClient : MonoBehaviour
                 webSocketMessage = JsonUtility.FromJson<WebSocketMessage>(data);
                 Debug.Log("[WebSocket] Received Json: " + JsonUtility.ToJson(webSocketMessage));
 
-                if (webSocketMessage != null&&webSocketMessage.status != "userJoined")
+                if (webSocketMessage != null)//&&webSocketMessage.status != "userJoined"
                 {
-                    //do admin action 
-                    sessionController.HandleAdminCommand(webSocketMessage.data);
-                    return;
+                    switch(webSocketMessage.status)
+                    {
+                        case "update_edit_mode":
+                            sessionController.HandleSettingsCommand(webSocketMessage.date);
+                            break;
+                        case "update_settings":
+                            sessionController.HandleSettingsUpdation(webSocketMessage.date.tableSettings);
+                            break;
+
+                        case "userJoined":
+                            break;
+
+                        default:
+                            //do admin action 
+                            sessionController.HandleAdminCommand(webSocketMessage.data);
+                            return;
+                    }
+                    
+                  //  return;
                 }
             }
             catch(Exception e)
