@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlateData : MonoBehaviour
 {
     [SerializeField] Transform ID;
-    TextMeshProUGUI idNumberText;
+    TextMeshPro idNumberText;
 
     private int idNumber;
     public int IdNumber { get { return idNumber; } set { idNumber = value; idNumberText.text = idNumber.ToString(); } }
@@ -14,7 +14,7 @@ public class PlateData : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        idNumberText = ID.GetComponent<TextMeshProUGUI>(); 
+        idNumberText = ID.GetComponent<TextMeshPro>(); 
     }
 
     // Update is called once per frame

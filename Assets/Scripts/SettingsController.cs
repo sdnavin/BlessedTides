@@ -28,7 +28,7 @@ public class SettingsController : MonoBehaviour
             GameObject plateObject = Instantiate(platePrefab, setupRoot);
             Vector3 pos = plateObject.transform.position;
             pos.x = MapZeroTo200ToMinusNToN(plates[i].x, 20);//plates[i].x;
-            pos.z = MapZeroTo200ToMinusNToN(plates[i].y, 8);//plates[i].y;
+            pos.z = -MapZeroTo200ToMinusNToN(plates[i].y, 8);//plates[i].y;
 
             Vector3 rotation = plateObject.transform.rotation.eulerAngles;
             rotation.y = plates[i].rotation;
@@ -48,13 +48,16 @@ public class SettingsController : MonoBehaviour
         return (value / 200f) * (2f * n) - n;
     }
 
-    private void ClearRoot()
+    public void ClearRoot()
     {
         if(setupRoot.childCount > 0)
         {
             foreach(Transform t in setupRoot)
             {
-                Destroy(t.gameObject);
+                if(t.TryGetComponent<PlateData>(out PlateData plate))
+                {
+                    Destroy(t.gameObject);
+                }
             }
         }
     }
