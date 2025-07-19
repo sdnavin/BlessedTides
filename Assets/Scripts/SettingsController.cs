@@ -27,14 +27,14 @@ public class SettingsController : MonoBehaviour
         {
             GameObject plateObject = Instantiate(platePrefab, setupRoot);
             Vector3 pos = plateObject.transform.position;
-            pos.x = MapZeroTo200ToMinusNToN(plates[i].x, 20);//plates[i].x;
-            pos.z = -MapZeroTo200ToMinusNToN(plates[i].y, 8);//plates[i].y;
+            pos.x = MapZeroTo200ToMinusNToN(plates[i].x, 20, 200);
+            pos.z = -MapZeroTo200ToMinusNToN(plates[i].y, 8, 200);
 
             Vector3 rotation = plateObject.transform.rotation.eulerAngles;
             rotation.y = plates[i].rotation;
 
             plateObject.transform.SetPositionAndRotation(pos, Quaternion.Euler(rotation));
-
+            plateObject.transform.localScale = Vector3.one * MapZeroTo200ToMinusNToN(plates[i].size, 1, 30);
             if(plateObject.TryGetComponent<PlateData>(out  PlateData data))
             {
                 data.IdNumber = i;
@@ -43,9 +43,9 @@ public class SettingsController : MonoBehaviour
         Debug.Log("Table update completed!");
     }
 
-    private float MapZeroTo200ToMinusNToN(float value, float n)
+    private float MapZeroTo200ToMinusNToN(float value, float n, float mapper)
     {
-        return (value / 200f) * (2f * n) - n;
+        return (value / mapper) * (2f * n) - n;
     }
 
     public void ClearRoot()
