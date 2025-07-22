@@ -28,6 +28,11 @@ public class SessionController : MonoBehaviour
         Settings,
         Video
     }
+
+    private void Awake()
+    {
+       SettingsDataHandler.Instance.Init();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -250,6 +255,7 @@ public class SessionController : MonoBehaviour
     {
        if(settingsController != null) 
        {
+            SettingsDataHandler.Instance.SaveSettingsData(tableSettings);
             settingsController.UpdateTable(tableSettings);
        }
     }
