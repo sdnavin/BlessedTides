@@ -59,7 +59,8 @@ public class WorldFollowUIOffset : MonoBehaviour
         if (uiElement == null || worldObject == null)
             return;
 
+        Vector3 pos = uiElement.position + initialOffset; 
         // Update world object to follow UI element while maintaining offset
-        worldObject.position = uiElement.position + initialOffset;
+        worldObject.position = new Vector3(pos.x, worldObject.position.y, pos.z);
     }
 }

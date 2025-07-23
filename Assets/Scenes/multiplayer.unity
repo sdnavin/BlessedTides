@@ -1388,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12
+      value: 67.6
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1396,7 +1396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.31
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6389077c981767840b8c2469bb591dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 2129428647}
+  uiElement: {fileID: 635525232}
   uiCamera: {fileID: 1963921809}
 --- !u!4 &499858126 stripped
 Transform:
@@ -2155,7 +2155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.6
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2163,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21
+      value: 19.31
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6389077c981767840b8c2469bb591dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 635525232}
+  uiElement: {fileID: 2129428647}
   uiCamera: {fileID: 1963921809}
 --- !u!4 &758511865 stripped
 Transform:
@@ -4612,7 +4612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4620,7 +4620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.66
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4701,7 +4701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6389077c981767840b8c2469bb591dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 403445968}
+  uiElement: {fileID: 680985903}
   uiCamera: {fileID: 1963921809}
 --- !u!4 &1792241310 stripped
 Transform:
@@ -5428,11 +5428,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edb6dd06896ebd44afd223969a033e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qrCodeTransforms:
-  - {fileID: 403445968}
-  - {fileID: 680985903}
-  - {fileID: 635525232}
-  - {fileID: 2129428647}
+  islandTransformData:
+  - qrCode: {fileID: 403445968}
+    island: {fileID: 2118512072}
+  - qrCode: {fileID: 680985903}
+    island: {fileID: 1785378428}
+  - qrCode: {fileID: 635525232}
+    island: {fileID: 486644746}
+  - qrCode: {fileID: 2129428647}
+    island: {fileID: 736066313}
 --- !u!1 &2052015353
 GameObject:
   m_ObjectHideFlags: 0
@@ -5863,7 +5867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5871,7 +5875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34
+      value: -38.66
       objectReference: {fileID: 0}
     - target: {fileID: 2608658894967030891, guid: 31c97792807cf3149aaadac1458fdad9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5950,7 +5954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6389077c981767840b8c2469bb591dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 680985903}
+  uiElement: {fileID: 403445968}
   uiCamera: {fileID: 1963921809}
 --- !u!4 &2250090995944868472 stripped
 Transform:

@@ -15,12 +15,22 @@ public class LogoSetupController : MonoBehaviour
             int index = 0;
             foreach(Plate plate in tableSettings.table.plates)
             {
+                //Set position of Logo parent
                 float posX = LinearScale(plate.x, 960);
                 float posY = -LinearScale(plate.y, 550);
                 Vector3 anchoredPos = logoTransforms[index].anchoredPosition;
                 anchoredPos.x = posX;
                 anchoredPos.y = posY;
                 logoTransforms[index].anchoredPosition = anchoredPos;
+
+                //Set Rotation of Logo
+                Vector3 rotation = logoTransforms[index].GetChild(0).transform.rotation.eulerAngles;
+                rotation.y = 360 - (180-plate.rotation);
+                logoTransforms[index].GetChild(0).transform.rotation = Quaternion.Euler(rotation);
+
+                //Set scale of logo
+                logoTransforms[index].GetChild(0).transform.localScale = Vector3.one * LinearScale(plate.size, 1, 30);
+
                 index++;
             }
         }
@@ -34,8 +44,8 @@ public class LogoSetupController : MonoBehaviour
     //{
     //    return (value / mapper) * (2f * n) - n;
     //}
-    private float LinearScale(float value, float n)
+    private float LinearScale(float value, float n, float mapper = 200)
     {
-        return (value / 200f) * n;
+        return (value / mapper) * n;
     }
 }

@@ -7,11 +7,25 @@ using System;
 
 public class GameSettingSetupController : MonoBehaviour
 {
-    [SerializeField] RectTransform[] qrCodeTransforms;
+    [SerializeField] IslandData[] islandTransformData;
+    //[SerializeField] RectTransform[] qrCodeTransforms;
     public static Action OnGameSettingsSetupCompleted = delegate { };
+
+    private void Awake()
+    {
+        //foreach(IslandData data in islandTransformData)
+        //{
+        //    data.Initialize();
+        //}
+    }
 
     private void Start()
     {
+        foreach (IslandData data in islandTransformData)
+        {
+            data.Initialize();
+        }
+
         if (SettingsDataHandler.Instance.HasSettingsData)
         {
             TableSettings tableSettings = SettingsDataHandler.Instance.GetSettingsData();
@@ -20,10 +34,21 @@ public class GameSettingSetupController : MonoBehaviour
             {
                 float posX = plate.x * 3;
                 float posY = -plate.y; //MapZeroTo200ToMinusNToN(plate.y, 300, 200);//
-                Vector3 anchoredPos = qrCodeTransforms[index].anchoredPosition;
+                Vector3 anchoredPos = islandTransformData[index].qrCode.anchoredPosition;
                 anchoredPos.x = posX;
                 anchoredPos.y = posY;
-                qrCodeTransforms[index].anchoredPosition = anchoredPos;
+                islandTransformData[index].qrCode.anchoredPosition = anchoredPos;
+
+                //islandTransformData[index].island.position = islandTransformData[index].qrCode.position + islandTransformData[index].InitPosOffset;
+
+                //Set Rotation of Logo
+                Vector3 rotation = islandTransformData[index].island.rotation.eulerAngles;
+                rotation.y = 180 - plate.rotation;
+                islandTransformData[index].island.rotation = Quaternion.Euler(rotation);
+
+                //Set scale of logo
+                islandTransformData[index].island.localScale = Vector3.one * LinearScale(plate.size, 0.7f, 30);
+
                 index++;
             }
         }
@@ -32,14 +57,27 @@ public class GameSettingSetupController : MonoBehaviour
             Debug.Log("No settings data found");
         }
 
-        if(OnGameSettingsSetupCompleted != null)
+        if (OnGameSettingsSetupCompleted != null)
         {
             OnGameSettingsSetupCompleted.Invoke();
         }
     }
 
-    private float MapZeroTo200ToMinusNToN(float value, float n, float mapper)
+    private float LinearScale(float value, float n, float mapper = 200)
     {
-        return (value / mapper) * (2f * n) - n;
+        return (value / mapper) * n;
     }
 }
+
+[System.Serializable]
+public struct IslandData
+{
+    public RectTransform qrCode;
+    public Transform island;
+    public Vector3 InitPosOffset { get; private set; }
+
+    public void Initialize()
+    {
+        InitPosOffset = island.position - qrCode.position;
+    }
+};
