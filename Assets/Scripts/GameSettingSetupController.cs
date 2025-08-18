@@ -28,9 +28,9 @@ public class GameSettingSetupController : MonoBehaviour
 
         if (SettingsDataHandler.Instance.HasSettingsData)
         {
-            TableSettings tableSettings = SettingsDataHandler.Instance.GetSettingsData();
+            Date configSettings = SettingsDataHandler.Instance.GetSettingsData();
             int index = 0;
-            foreach (Plate plate in tableSettings.table.plates)
+            foreach (Plate plate in configSettings.plates)
             {
                 float posX = plate.x * 3;
                 float posY = -plate.y; //MapZeroTo200ToMinusNToN(plate.y, 300, 200);//

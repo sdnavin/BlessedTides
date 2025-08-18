@@ -30,7 +30,8 @@ public class SettingsDataHandler
 
     // Server configuration
     public string serverUploadURL = "https://your-server.com/api/upload";
-    private TableSettings currentSettingsData;
+    private Date currentSettingsData;
+    //private TableSettings currentSettingsData;
     private bool dataModified = false;
 
     public bool HasSettingsData => currentSettingsData != null;
@@ -60,7 +61,7 @@ public class SettingsDataHandler
             string savedJson = PlayerPrefs.GetString(SETTINGS_DATA_KEY);
             try
             {
-                currentSettingsData = JsonUtility.FromJson<TableSettings>(savedJson);
+                currentSettingsData = JsonUtility.FromJson<Date>(savedJson);
                 Debug.Log("Shape data loaded from PlayerPrefs: " + currentSettingsData.ToString());
                 //SaveToJsonFile();
             }
@@ -72,7 +73,7 @@ public class SettingsDataHandler
     }
 
     // Set shape data from JSON string
-    public void SaveSettingsData(TableSettings tableSettings)
+    public void SaveSettingsData(Date tableSettings)
     {
         try
         {
@@ -101,7 +102,7 @@ public class SettingsDataHandler
     }
 
     // Get current shape data
-    public TableSettings GetSettingsData()
+    public Date GetSettingsData()
     {
         if (currentSettingsData == null)
         {

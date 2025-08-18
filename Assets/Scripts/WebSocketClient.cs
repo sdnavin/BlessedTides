@@ -28,14 +28,21 @@ public class Root
 public class Date
 {
     public string messageType;
-
+    public string plateId;
     public string gameId;
 
     public bool editMode;
 
-    public TableSettings tableSettings;
+    public Table tableData;
+    //public TableSettings tableData;
+
+    public List<Plate> plates;//public PlateSettings plates;
 
     public bool last;
+
+    public string action;
+    public string timestamp;
+    public string source;
 }
 
 [System.Serializable]
@@ -55,6 +62,12 @@ public class Table
 
     public int height;
 
+    //public List<Plate> plates;
+}
+
+[System.Serializable]
+public class PlateSettings
+{
     public List<Plate> plates;
 }
 
@@ -301,8 +314,11 @@ public class WebSocketClient : MonoBehaviour
                         case "update_edit_mode":
                             sessionController.HandleSettingsCommand(webSocketMessage.date);
                             break;
-                        case "update_settings":
-                            sessionController.HandleSettingsUpdation(webSocketMessage.date.tableSettings);
+                        //case "update_settings"://plate_settings_update
+                        //    sessionController.HandleSettingsUpdation(webSocketMessage.date.tableSettings);
+                        //    break;
+                        case "plate_settings_update":
+                            sessionController.HandleSettingsUpdation(webSocketMessage.date.plates);
                             break;
 
                         case "userJoined":

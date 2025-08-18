@@ -251,12 +251,22 @@ public class SessionController : MonoBehaviour
        settingsController = GameObject.FindObjectOfType<SettingsController>();
     }
 
-    public void HandleSettingsUpdation(TableSettings tableSettings)
+    public void HandleSettingsUpdation(Date configSettings)
     {
        if(settingsController != null) 
        {
-            SettingsDataHandler.Instance.SaveSettingsData(tableSettings);
-            settingsController.UpdateTable(tableSettings);
-       }
+            SettingsDataHandler.Instance.SaveSettingsData(configSettings);
+            settingsController.UpdateTable(configSettings.tableData);
+            settingsController.UpdatePlates(configSettings.plates);
+        }
+    }
+
+    public void HandleSettingsUpdation(List<Plate> plateSettings)
+    {
+        if (settingsController != null)
+        {
+            //SettingsDataHandler.Instance.SaveSettingsData(plateSettings);
+            settingsController.UpdatePlates(plateSettings);
+        }
     }
 }
