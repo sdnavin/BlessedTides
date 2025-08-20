@@ -8,7 +8,6 @@ using System;
 public class GameSettingSetupController : MonoBehaviour
 {
     [SerializeField] IslandData[] islandTransformData;
-    //[SerializeField] RectTransform[] qrCodeTransforms;
     public static Action OnGameSettingsSetupCompleted = delegate { };
 
     private void Awake()
@@ -30,7 +29,7 @@ public class GameSettingSetupController : MonoBehaviour
         {
             Date configSettings = SettingsDataHandler.Instance.GetSettingsData();
             int index = 0;
-            foreach (Plate plate in configSettings.plates)
+            foreach (Plate plate in configSettings.table.plates)
             {
                 float posX = plate.x * 3;
                 float posY = -plate.y; //MapZeroTo200ToMinusNToN(plate.y, 300, 200);//

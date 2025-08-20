@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 678032541}
   - component: {fileID: 678032543}
   - component: {fileID: 678032544}
+  - component: {fileID: 678032546}
+  - component: {fileID: 678032545}
   m_Layer: 0
   m_Name: WS
   m_TagString: Untagged
@@ -239,16 +241,34 @@ MonoBehaviour:
       duration: 0
     date:
       messageType: 
+      tableId: 
       gameId: 
       editMode: 0
-      tableSettings:
-        table:
-          id: 
-          shape: 
-          width: 0
-          height: 0
-          plates: []
+      table:
+        id: 
+        shape: 
+        width: 0
+        height: 0
+        status: 
+        cornerCoordinates:
+          topLeft:
+            x: 0
+            y: 0
+          topRight:
+            x: 0
+            y: 0
+          bottomRight:
+            x: 0
+            y: 0
+          bottomLeft:
+            x: 0
+            y: 0
+        plates: []
+      plates: []
       last: 0
+      action: 
+      timestamp: 
+      source: 
   sessionController: {fileID: 678032544}
 --- !u!4 &678032542
 Transform:
@@ -292,6 +312,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 678032546}
+        m_TargetAssemblyTypeName: ProjectionSetupController, Assembly-CSharp
+        m_MethodName: SetupQuadCorners
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startDelay: 0
 --- !u!114 &678032544
 MonoBehaviour:
@@ -313,3 +348,33 @@ MonoBehaviour:
   contentType: 
   isLooping: 0
   currentState: 0
+--- !u!114 &678032545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678032540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4978c43c40ee814ea2106c6ab8822dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadWarpMaterial: {fileID: 2100000, guid: 74cbf3aa6352bac4fbb2d2393521aed5, type: 2}
+  bottomLeft: {x: -0.5, y: -0.5, z: 0}
+  bottomRight: {x: 0.5, y: -0.5, z: 0}
+  topRight: {x: 0.5, y: 0.5, z: 0}
+  topLeft: {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &678032546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678032540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46a01571165fa247812cf57909e0a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadWarpController: {fileID: 678032545}

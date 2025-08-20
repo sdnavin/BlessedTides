@@ -116,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2119495901466116744}
   - component: {fileID: 4960900417278515804}
-  - component: {fileID: 1289789593250440306}
   - component: {fileID: 6996437550622862245}
   m_Layer: 0
   m_Name: QuadCam
@@ -192,14 +191,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1289789593250440306
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9175191209287376479}
-  m_Enabled: 1
 --- !u!114 &6996437550622862245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +214,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

@@ -28,13 +28,13 @@ public class Root
 public class Date
 {
     public string messageType;
-    public string plateId;
+    public string tableId;
     public string gameId;
 
     public bool editMode;
 
-    public Table tableData;
-    //public TableSettings tableData;
+    public Table table;
+    public ContentData contentData;
 
     public List<Plate> plates;//public PlateSettings plates;
 
@@ -43,13 +43,19 @@ public class Date
     public string action;
     public string timestamp;
     public string source;
+
+    public long startTime;
+    public long duration;
 }
 
 [System.Serializable]
-public class TableSettings
+public class ContentData
 {
-    public Table table;
+    public string type;       // e.g., "game"
+    public string gameId;
+    public string timestamp; // e.g., "2025-08-20T07:00:49.474Z"
 }
+
 
 [System.Serializable]
 public class Table
@@ -62,7 +68,10 @@ public class Table
 
     public int height;
 
-    //public List<Plate> plates;
+    public string status;
+
+    public CornerCoordinates cornerCoordinates;
+    public List<Plate> plates;
 }
 
 [System.Serializable]
@@ -86,6 +95,24 @@ public class Plate
 
     public string tableId;
 }
+
+[System.Serializable]
+public class CornerCoordinates
+{
+    public Point topLeft;
+    public Point topRight;
+    public Point bottomRight;
+    public Point bottomLeft;
+}
+
+[System.Serializable]
+public class Point
+{
+    public float x;
+    public float y;
+}
+
+//=================================================================================//
 
 [System.Serializable]
 public class WebSocketMessage
@@ -314,9 +341,11 @@ public class WebSocketClient : MonoBehaviour
                         case "update_edit_mode":
                             sessionController.HandleSettingsCommand(webSocketMessage.date);
                             break;
-                        //case "update_settings"://plate_settings_update
-                        //    sessionController.HandleSettingsUpdation(webSocketMessage.date.tableSettings);
-                        //    break;
+                            
+                        case "table_settings_update"://plate_settings_update
+                            
+                            sessionController.HandleSettingsUpdation(webSocketMessage.date.table);
+                            break;
                         case "plate_settings_update":
                             sessionController.HandleSettingsUpdation(webSocketMessage.date.plates);
                             break;
@@ -324,9 +353,13 @@ public class WebSocketClient : MonoBehaviour
                         case "userJoined":
                             break;
 
+                        case "content_update":
+                            sessionController.HandleAdminCommand(webSocketMessage.date);
+                            break;
+
                         default:
                             //do admin action 
-                            sessionController.HandleAdminCommand(webSocketMessage.data);
+                            //sessionController.HandleAdminCommand(webSocketMessage.date);
                             return;
                     }
                     

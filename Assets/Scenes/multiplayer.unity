@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qrCodeWidth: 1024
   qrCodeHeight: 1024
-  url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
+  url: https://joystick.vionur.com?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 2
   uiImage: {fileID: 24763277}
@@ -1160,6 +1160,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
   startDelay: 20
 --- !u!4 &416190421
 Transform:
@@ -2579,7 +2582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1337282550990498619, guid: 9fdee121df6c9874c998e09eacdc6893, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1337282550990498619, guid: 9fdee121df6c9874c998e09eacdc6893, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3495,8 +3498,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
-  m_Antialiasing: 1
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 1
   m_Dithering: 1
@@ -3573,8 +3576,8 @@ Camera:
   m_GameObject: {fileID: 1262305877}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3623,7 +3626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262305877}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15, y: 81.6, z: -7.7}
+  m_LocalPosition: {x: 15, y: 90, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3865,7 +3868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qrCodeWidth: 1024
   qrCodeHeight: 1024
-  url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
+  url: https://joystick.vionur.com?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 4
   uiImage: {fileID: 1521605118}
@@ -4178,7 +4181,7 @@ GameObject:
   - component: {fileID: 1600632997}
   - component: {fileID: 1600632996}
   m_Layer: 0
-  m_Name: SampleScenePostProcessingSettings
+  m_Name: PPVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4308,7 +4311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qrCodeWidth: 1024
   qrCodeHeight: 1024
-  url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
+  url: https://joystick.vionur.com?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 1
   uiImage: {fileID: 1634309999}
@@ -4776,7 +4779,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 1963921809}
+  m_Camera: {fileID: 1262305881}
   m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4796,19 +4799,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794051810}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.7000122}
-  m_LocalScale: {x: 0.022224264, y: 0.022224264, z: 0.022224264}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalScale: {x: 0.071293004, y: 0.13762155, z: 0.13762155}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1169770586}
   - {fileID: 39046947}
   m_Father: {fileID: 2050225470}
   m_RootOrder: -2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -855, y: -43.000015}
+  m_AnchoredPosition: {x: 15.3, y: 28}
   m_SizeDelta: {x: 800, y: 449.95865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1815617667
@@ -5120,7 +5123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qrCodeWidth: 1024
   qrCodeHeight: 1024
-  url: https://joystick-game.vercel.app?gameId={gameid}&slotId={slotno}
+  url: https://joystick.vionur.com?gameId={gameid}&slotId={slotno}
   gameId: 
   slotNo: 3
   uiImage: {fileID: 1900745093}
@@ -5141,7 +5144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1963921807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,15 +5857,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.75
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 60
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -7.7
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5874,11 +5877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5892,17 +5895,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6996437550622862245, guid: b72da647d8f35524b834385f35a8e947, type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6996437550622862245, guid: b72da647d8f35524b834385f35a8e947, type: 3}
-      propertyPath: m_Cameras.Array.data[0]
-      value: 
-      objectReference: {fileID: 1963921809}
     - target: {fileID: 9175191209287376479, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_Name
-      value: Camera
+      value: QuadCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175191209287376479, guid: b72da647d8f35524b834385f35a8e947, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

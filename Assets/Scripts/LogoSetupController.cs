@@ -12,7 +12,7 @@ public class LogoSetupController : MonoBehaviour
         {
             Date configSettings = SettingsDataHandler.Instance.GetSettingsData();
             int index = 0;
-            foreach(Plate plate in configSettings.plates)
+            foreach(Plate plate in configSettings.table.plates)
             {
                 //Set position of Logo parent
                 float posX = LinearScale(plate.x, 960);

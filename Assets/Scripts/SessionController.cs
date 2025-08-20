@@ -153,11 +153,13 @@ public class SessionController : MonoBehaviour
        PlayVideo("logo", WebSocketClient.instance.gameDetails.logo, true);
     }
 
-    public void HandleAdminCommand(AdminCommandData data)
+    public void HandleAdminCommand(Date data)
     {
-        switch (data.scene.ToLower())
+        switch (data.contentData.type.ToLower())
         {
             case "logo":
+
+                SaveSettings(data);
                 PlayVideo("logo",WebSocketClient.instance.gameDetails.logo,true);
                 SetActiveCursor(true);
                 currentState = GameState.StandBy;
@@ -173,7 +175,7 @@ public class SessionController : MonoBehaviour
                 currentState = GameState.InGame;
                 break;
             default:
-                Debug.LogWarning("Unknown scene type: " + data.scene);
+                Debug.LogWarning("Unknown scene type: " + data.contentData.type);
                 SetActiveCursor(true);
                 break;
         }
@@ -251,13 +253,22 @@ public class SessionController : MonoBehaviour
        settingsController = GameObject.FindObjectOfType<SettingsController>();
     }
 
-    public void HandleSettingsUpdation(Date configSettings)
+    //public void HandleSettingsUpdation(Date configSettings)
+    //{
+    //   if(settingsController != null) 
+    //   {
+    //        SettingsDataHandler.Instance.SaveSettingsData(configSettings);
+    //        settingsController.UpdateTable(configSettings.tableData);
+    //        settingsController.UpdatePlates(configSettings.plates);
+    //    }
+    //}
+    public void HandleSettingsUpdation(Table tableSettings)
     {
-       if(settingsController != null) 
-       {
-            SettingsDataHandler.Instance.SaveSettingsData(configSettings);
-            settingsController.UpdateTable(configSettings.tableData);
-            settingsController.UpdatePlates(configSettings.plates);
+        if (settingsController != null)
+        {
+            //SettingsDataHandler.Instance.SaveSettingsData(configSettings);
+            //settingsController.UpdateTable(tableSettings);
+            settingsController.UpdateTableCorners(tableSettings.cornerCoordinates);
         }
     }
 
@@ -268,5 +279,10 @@ public class SessionController : MonoBehaviour
             //SettingsDataHandler.Instance.SaveSettingsData(plateSettings);
             settingsController.UpdatePlates(plateSettings);
         }
+    }
+
+    public void SaveSettings(Date configSettings)
+    {
+        SettingsDataHandler.Instance.SaveSettingsData(configSettings);
     }
 }

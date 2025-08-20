@@ -88,7 +88,7 @@ public class SettingsDataHandler
                 PlayerPrefs.SetString(SETTINGS_DATA_KEY, date);
                 PlayerPrefs.Save();
 
-                Debug.Log("Shape data updated: " + currentSettingsData.ToString());
+                Debug.Log("Shape data updated: " + date);
             }
             else
             {

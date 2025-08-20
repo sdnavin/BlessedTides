@@ -8,6 +8,9 @@ public class EnableEvent : MonoBehaviour
     [SerializeField]
     UnityEvent onEnable;
 
+    [SerializeField]
+    UnityEvent onStart;
+
     public float startDelay;
 
     private void OnEnable()
@@ -20,11 +23,16 @@ public class EnableEvent : MonoBehaviour
         onEnable.Invoke();
     }
 
+    void OnStart()
+    {
+        onStart.Invoke();
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnStart();
     }
 
     // Update is called once per frame
