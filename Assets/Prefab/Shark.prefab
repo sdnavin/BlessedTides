@@ -55,7 +55,7 @@ MonoBehaviour:
   fixedYPosition: 0
   damageMake: 5
   animator: {fileID: 5001626574502055265}
-  damageCooldown: 13
+  damageCooldown: 20
 --- !u!65 &2250090995728342344
 BoxCollider:
   m_ObjectHideFlags: 0

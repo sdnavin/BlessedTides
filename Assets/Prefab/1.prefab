@@ -586,7 +586,7 @@ MonoBehaviour:
   swaySpeed: 2
   acceleration: 3
   deceleration: 0.5
-  boostMultiplier: 4
+  boostMultiplier: 7
   boostDuration: 1.25
   boostCooldown: 1.5
   boostTrail: {fileID: 3839917286765040216}
@@ -24385,7 +24385,7 @@ Transform:
   - {fileID: 4722889760681522407}
   - {fileID: 1407164475018148217}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2297727759921567600
 MonoBehaviour:

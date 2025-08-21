@@ -7,13 +7,14 @@ using UnityEngine;
 public class JoystickData
 {
     public string direction;
-    public string message;
-    public string userId;
     public string type;
     public double x;
     public double y;
     public int distance;
     public int slotId;
+    public string userId;
+    public string gameId;
+    public string messageType;
 }
 [System.Serializable]
 
@@ -30,6 +31,12 @@ public class DataIn
     public string status;
     public JoystickData data;
     public UserData user;
+}
+[System.Serializable]
+public class JoystickDataIn
+{
+    public string status;
+    public JoystickData data;
 }
 [System.Serializable]
 

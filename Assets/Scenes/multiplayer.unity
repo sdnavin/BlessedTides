@@ -3498,7 +3498,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 1
@@ -3626,7 +3626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262305877}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15, y: 90, z: -7.7}
+  m_LocalPosition: {x: 15, y: 125, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4180,6 +4180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600632997}
   - component: {fileID: 1600632996}
+  - component: {fileID: 1600632998}
   m_Layer: 0
   m_Name: PPVolume
   m_TagString: Untagged
@@ -4199,9 +4200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   priority: 0
-  blendDistance: 0
+  blendDistance: 100
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 3cd9220d776d8144187f1919a22efa49, type: 2}
 --- !u!4 &1600632997
@@ -4219,6 +4220,27 @@ Transform:
   m_Father: {fileID: 2050225470}
   m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1600632998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600632995}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 223.50221, y: 98.59281, z: 234.66977}
+  m_Center: {x: 42.15754, y: 18.828426, z: -48.858078}
 --- !u!1 &1634309997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,7 +4823,7 @@ RectTransform:
   m_GameObject: {fileID: 1794051810}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -7}
-  m_LocalScale: {x: 0.071293004, y: 0.13762155, z: 0.13762155}
+  m_LocalScale: {x: 0.1376216, y: 0.13762155, z: 0.13762155}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1169770586}
@@ -5893,6 +5915,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996437550622862245, guid: b72da647d8f35524b834385f35a8e947, type: 3}
+      propertyPath: m_RenderPostProcessing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9175191209287376479, guid: b72da647d8f35524b834385f35a8e947, type: 3}

@@ -56,6 +56,13 @@ public class SettingsDataHandler
     // Initialize the data handler
     public void Init()
     {
+        if(!PlayerPrefs.HasKey(SETTINGS_DATA_KEY))
+        {
+            string defaultData = Resources.Load<TextAsset>("DefaultTableData").text;
+            PlayerPrefs.SetString(SETTINGS_DATA_KEY, defaultData);
+            PlayerPrefs.Save();
+            Debug.LogError("Default Loaded");
+        }
         if (PlayerPrefs.HasKey(SETTINGS_DATA_KEY))
         {
             string savedJson = PlayerPrefs.GetString(SETTINGS_DATA_KEY);

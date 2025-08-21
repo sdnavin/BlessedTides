@@ -307,7 +307,6 @@ MonoBehaviour:
   bottomRight: {x: 0.5, y: -0.5, z: 0}
   topRight: {x: 0.5, y: 0.5, z: 0}
   topLeft: {x: -0.5, y: 0.5, z: 0}
-  mainTex: {fileID: 0}
 --- !u!1001 &619660325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,10 +358,6 @@ PrefabInstance:
     - target: {fileID: 2119495901466116744, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6615843550867610275, guid: b72da647d8f35524b834385f35a8e947, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 9175191209287376479, guid: b72da647d8f35524b834385f35a8e947, type: 3}
       propertyPath: m_Name
@@ -503,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0.4}
+  m_LocalPosition: {x: 0, y: 45, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

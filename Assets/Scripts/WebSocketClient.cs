@@ -353,6 +353,11 @@ public class WebSocketClient : MonoBehaviour
                         case "userJoined":
                             break;
 
+                        case "joystickMove":
+                            break;
+                        case "boost":
+                            break;
+
                         case "content_update":
                             sessionController.HandleAdminCommand(webSocketMessage.date);
                             break;
@@ -395,9 +400,9 @@ public class WebSocketClient : MonoBehaviour
             //    OnConnected.Invoke();
             //    isConnectedtoJoystick = true;
             //}
-            if (dataInVis.data != null&& dataInVis.data.slotId>0)
+            if (dataInVis.data != null && dataInVis.data.slotId > 0)
             {
-                userData[dataInVis.data.slotId - 1].userId= dataInVis.data.userId;
+                userData[dataInVis.data.slotId - 1].userId = dataInVis.data.userId;
                 dataIn[dataInVis.data.slotId - 1] = dataInVis;
             }
             lastUpdateTime = Time.time;
